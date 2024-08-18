@@ -101,3 +101,40 @@ export QT_QPA_PLATFORM=xcb
 alias chrome-clean="rm -rf ~/.config/google-chrome-unstable/Singleton*"
 
 export PATH="/usr/bin/flutter/bin:$PATH"
+
+
+function pp() {
+    local base_dir=~/projects
+    local session_name
+    local folder
+
+    # Check if already inside a tmux session
+    if [ -n "$TMUX" ]; then
+        echo "You are already inside a tmux session."
+        return 1
+    fi
+
+    # List subfolders and select one using fzf
+    folder=$(find "$base_dir" -maxdepth 1 -type d ! -path "$base_dir" | fzf --prompt="Select a folder: " --preview="echo {} | xargs -I % ls -ld %")
+
+    # Check if a folder was selected
+    if [ -z "$folder" ]; then
+        echo "No folder selected or invalid selection."
+        return 1
+    fi
+
+    # Extract the session name from the folder path
+    session_name=$(basename "$folder")
+
+    # Create tmux session if it doesn't exist
+    if ! tmux has-session -t "$session_name" 2>/dev/null; then
+        tmux new-session -d -s "$session_name" "cd '$folder' && nvim"
+        tmux send-keys -t "$session_name".1 ":NvimTreeToggle" C-m
+
+        tmux split-window -h -l 20
+        tmux send-keys -t "$session_name".2 "cd '$folder' && clear" C-m
+    fi
+
+    # Attach to the session
+    tmux attach -t "$session_name"
+}
