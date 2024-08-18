@@ -100,3 +100,4 @@ alias dart-build="dart run build_runner build --delete-conflicting-outputs"
 export QT_QPA_PLATFORM=xcb
 alias chrome-clean="rm -rf ~/.config/google-chrome-unstable/Singleton*"
 
+export PATH="/usr/bin/flutter/bin:$PATH"
