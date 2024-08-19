@@ -131,7 +131,11 @@ function pp() {
         tmux new-session -d -s "$session_name" "cd '$folder' && nvim"
         tmux send-keys -t "$session_name".1 ":NvimTreeToggle" C-m
 
-        tmux split-window -h -l 20
+        tmux split-window -v -l 20
+        tmux select-pane -t "$session_name".1
+        wait 1
+        tmux resize-pane -D 100
+        tmux resize-pane -Z
         tmux send-keys -t "$session_name".2 "cd '$folder' && clear" C-m
     fi
 
