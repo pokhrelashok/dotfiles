@@ -60,7 +60,7 @@ shape = "Block"
 TERM = "xterm-256color"
 
 [font]
-size = 18
+size = 17
 
 [font.bold]
 family = "JetBrains Mono"
@@ -99,10 +99,6 @@ decorations = "full"
 dynamic_title = true
 option_as_alt = "Both"
 #startup_mode = "Maximized"
-
-[window.dimensions]
-columns = 160
-lines = 80
 
 [window.padding]
 x = 4

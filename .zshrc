@@ -70,7 +70,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
-alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+#alias ls="eza -G --color=always --long --git --icons=always --no-time --no-user --no-permissions"
 alias vim='nvim'
 alias c='clear'
 
@@ -130,13 +130,6 @@ function pp() {
     if ! tmux has-session -t "$session_name" 2>/dev/null; then
         tmux new-session -d -s "$session_name" "cd '$folder' && nvim"
         tmux send-keys -t "$session_name".1 ":NvimTreeToggle" C-m
-
-        tmux split-window -v -l 20
-        tmux select-pane -t "$session_name".1
-        wait 1
-        tmux resize-pane -D 100
-        tmux resize-pane -Z
-        tmux send-keys -t "$session_name".2 "cd '$folder' && clear" C-m
     fi
 
     # Attach to the session
