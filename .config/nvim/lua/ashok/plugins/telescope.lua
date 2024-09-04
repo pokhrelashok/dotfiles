@@ -15,6 +15,11 @@ return {
 					find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
 				},
 			},
+			extensions = {
+				recent_files = {
+					only_cwd = true,
+				},
+			},
 			defaults = {
 				file_ignore_patterns = {
 					".git/",
@@ -75,12 +80,12 @@ return {
 		})
 
 		telescope.load_extension("fzf")
-
+		telescope.load_extension("recent_files")
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
 		keymap.set(
 			"n",
-			"<leader>p",
+			"<leader>fc",
 			"<cmd>Telescope frecency workspace=CWD theme=dropdown previewer=false<cr>",
 			{ desc = "Fuzzy find recent files" }
 		)
@@ -88,5 +93,12 @@ return {
 		keymap.set("n", "<leader>fr", "<cmd>Telescope frecency oldfiles<cr>", { desc = "Fuzzy find recent files" })
 		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+		vim.api.nvim_set_keymap(
+			"n",
+			"<leader>p",
+			[[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
+			{ noremap = true, silent = true }
+		)
 	end,
+	-- Map a shortcut to open the picker.
 }
