@@ -16,6 +16,10 @@ return {
 					name = "rose-pine",
 					colorscheme = "rose-pine",
 				},
+				{
+					name = "cyberdream",
+					colorscheme = "cyberdream",
+				},
 			},
 		})
 		local keymap = vim.keymap

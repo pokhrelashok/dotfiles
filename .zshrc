@@ -18,8 +18,11 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in Powerlevel10k
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-
+#zinit ice depth=1; zinit light romkatv/powerlevel10k
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="headline"
+export XDG_CONFIG_HOME=$HOME/.config
+source $ZSH/oh-my-zsh.sh
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
@@ -86,8 +89,6 @@ export NVM_DIR="$HOME/.nvm"
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 source "$HOME/.cargo/env"
-alias theme='bash -c  "$(wget -qO- https://git.io/vQgMr)"'
-
 # bun completions
 [ -s "/home/pokhrelashok2/.bun/_bun" ] && source "/home/pokhrelashok2/.bun/_bun"
 
@@ -129,7 +130,6 @@ function pp() {
     # Create tmux session if it doesn't exist
     if ! tmux has-session -t "$session_name" 2>/dev/null; then
         tmux new-session -d -s "$session_name" "cd '$folder' && nvim"
-        tmux send-keys -t "$session_name".1 ":NvimTreeToggle" C-m
     fi
 
     # Attach to the session
