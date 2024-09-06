@@ -84,7 +84,7 @@ HEADLINE_GIT_STATUS_CMD='headline_git_status'
 HEADLINE_USER_PREFIX=' ' # consider " "
 HEADLINE_HOST_PREFIX='' # consider " "
 HEADLINE_PATH_PREFIX=' ' # consider " "
-HEADLINE_BRANCH_PREFIX='' # consider " "
+HEADLINE_BRANCH_PREFIX=" "
 
 # Info joints
 HEADLINE_USER_BEGIN=''
@@ -425,10 +425,10 @@ headline_precmd() {
   fi
 
   # User
-  if (( ${#user_str} )); then
-    _headline_part JOINT "$HEADLINE_USER_BEGIN" left
-    _headline_part USER "$HEADLINE_USER_PREFIX$user_str" left
-  fi
+  #if (( ${#user_str} )); then
+    #_headline_part JOINT "$HEADLINE_USER_BEGIN" left
+    #_headline_part USER "$HEADLINE_USER_PREFIX$user_str" left
+  #fi
 
   # Host
   # if (( ${#host_str} )); then
