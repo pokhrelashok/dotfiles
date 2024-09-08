@@ -297,7 +297,7 @@ return {
 				},
 			},
 		})
-
+		vim.keymap.set("n", "<Tab>", "<C-w>w", { noremap = true, silent = true })
 		vim.cmd([[nnoremap \ :Neotree toggle reveal<cr>]])
 		vim.keymap.set("n", "<leader>e", "<cmd>Neotree reveal<cr>", { desc = "Focus Neotree" })
 	end,

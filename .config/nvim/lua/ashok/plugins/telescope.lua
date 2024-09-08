@@ -18,6 +18,7 @@ return {
 			extensions = {
 				recent_files = {
 					only_cwd = true,
+					previewer = false,
 				},
 			},
 			defaults = {
