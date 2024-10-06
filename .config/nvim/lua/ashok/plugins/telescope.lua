@@ -14,6 +14,9 @@ return {
 				oldfiles = {
 					cwd_only = true,
 				},
+				find_files = {
+					cwd_only = true,
+				},
 			},
 			defaults = {
 				file_ignore_patterns = {
