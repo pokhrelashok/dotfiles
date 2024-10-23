@@ -83,6 +83,7 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # my shortcuts
 alias android="~/android-studio/bin/studio.sh"
+export ANDROID_HOME="/home/pokhrelashok2/Android/Sdk"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -126,6 +127,7 @@ function pp() {
 
     # Extract the session name from the folder path
     session_name=$(basename "$folder")
+    session_name=${session_name//./_}
 
     # Create tmux session if it doesn't exist
     if ! tmux has-session -t "$session_name" 2>/dev/null; then
