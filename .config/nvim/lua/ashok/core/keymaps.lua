@@ -39,3 +39,7 @@ keymap.set("n", "<Leader>dr", "<cmd>lua require'dap'.run_last()<CR>", { desc = "
 
 -- rustaceanvim
 keymap.set("n", "<Leader>dt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Debugger testables" })
+
+vim.keymap.set("n", "<Leader>/", function()
+	require("Comment.api").toggle.linewise.current()
+end, { noremap = true, silent = true })
