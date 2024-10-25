@@ -43,3 +43,7 @@ keymap.set("n", "<Leader>dt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { des
 vim.keymap.set("n", "<Leader>/", function()
 	require("Comment.api").toggle.linewise.current()
 end, { noremap = true, silent = true })
+
+vim.keymap.set("n", "<Esc>", function()
+	require("notify").dismiss()
+end, { desc = "dismiss notify popup and clear hlsearch" })
