@@ -137,3 +137,4 @@ function pp() {
     # Attach to the session
     tmux attach -t "$session_name"
 }
+export COREPACK_ENABLE_AUTO_PIN=0
